@@ -18,7 +18,7 @@ public class App {
 		// 5. Mostre.
 		// frame.setVisible (true);
 		frame2.setVisible (true);	
-		frame2.setSize (500, 500);	 
+		frame2.setSize (500, 450);	 
 		
 		
 		
