@@ -1,4 +1,5 @@
 package com.gabriel;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
@@ -20,11 +21,7 @@ public class App {
 		frame2.setVisible (true);	
 		frame2.setSize (500, 450);	 
 		
-		
-		
 
-		
-	
 	}
 
 	private static void setSize(int i, int j) {

@@ -1,14 +1,19 @@
 package com.gabriel;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.HeadlessException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
+
 public class MetronomoFrame extends JFrame {
 	
 	JLabel lb_bpm;
-	JButton bt_iniciar, bt_parar;
+	private JButton bt_iniciar, bt_parar;
+	public JLabel lb_test;
+	protected JLabel lb_test2;
 	
 	/**
 	 * 
@@ -18,7 +23,6 @@ public class MetronomoFrame extends JFrame {
 	public MetronomoFrame(String title) throws HeadlessException {
 		super(title);
 		setTitle("Metrônomo");
-		setResizable(false);
 		setBounds(100, 100, 450, 300);
 		System.out.print("create Frame");
 		
@@ -31,15 +35,23 @@ public class MetronomoFrame extends JFrame {
 		
 		lb_bpm = new JLabel("BPM:"); 
 		getContentPane().add(lb_bpm);
-		lb_bpm.setBounds(20, 20, 100, 15);
+		setLayout( new BorderLayout() );
 		
-		bt_iniciar = new JButton("Inicar");
+		bt_iniciar = new JButton("Iniciar");
 		getContentPane().add(bt_iniciar);
-		bt_iniciar.setBounds(20,340,80, 30);
+		setLayout( new BorderLayout() );
 		
 		bt_parar = new JButton("Parar");
 		getContentPane().add(bt_parar);
 		bt_parar.setBounds(20,240,80, 30);
+		setLayout( new BorderLayout() );
+		
+
+		 add(bt_iniciar, BorderLayout.SOUTH);
+
+		 add(bt_parar, BorderLayout.SOUTH);
+		 
+		 setSize(800, 800);
 		
 	}
 	
