@@ -10,10 +10,8 @@ import javax.swing.JLabel;
 
 public class MetronomoFrame extends JFrame {
 	
-	JLabel lb_bpm;
-	private JButton bt_iniciar, bt_parar;
-	public JLabel lb_test;
-	protected JLabel lb_test2;
+	private JLabel lbBpm;
+	private JButton btIniciar, btParar;
 	
 	/**
 	 * 
@@ -28,28 +26,32 @@ public class MetronomoFrame extends JFrame {
 		
 
 	}
-
+	
+	FlowLayout experimentLayout = new FlowLayout();
+		
 	@Override
 	protected void frameInit() {
 		super.frameInit();
 		
-		lb_bpm = new JLabel("BPM:"); 
-		getContentPane().add(lb_bpm);
+		lbBpm = new JLabel("BPM:"); 
+		getContentPane().add(lbBpm);
 		setLayout( new BorderLayout() );
 		
-		bt_iniciar = new JButton("Iniciar");
-		getContentPane().add(bt_iniciar);
+		btIniciar = new JButton("Iniciar");
+		getContentPane().add(btIniciar);
 		setLayout( new BorderLayout() );
 		
-		bt_parar = new JButton("Parar");
-		getContentPane().add(bt_parar);
-		bt_parar.setBounds(20,240,80, 30);
+		btParar = new JButton("Parar");
+		getContentPane().add(btParar);
+		btParar.setBounds(20,240,80, 30);
 		setLayout( new BorderLayout() );
 		
 
-		 add(bt_iniciar, BorderLayout.SOUTH);
+		 add(btIniciar, BorderLayout.PAGE_START);
 
-		 add(bt_parar, BorderLayout.SOUTH);
+		 add(lbBpm, BorderLayout.CENTER);
+		 
+		 add(btParar, BorderLayout.PAGE_END);
 		 
 		 setSize(800, 800);
 		

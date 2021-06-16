@@ -16,6 +16,7 @@ public class App {
 		
 		frame2.pack ();
 
+
 		// 5. Mostre.
 		// frame.setVisible (true);
 		frame2.setVisible (true);	
