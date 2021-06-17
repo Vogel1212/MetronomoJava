@@ -12,7 +12,7 @@ public class App {
 		
 		//JFrame frame = new JFrame ("FrameDemo");
 		
-		MetronomoFrame frame2 = new MetronomoFrame ("FrameMetronomo");
+		MetronomoFrame frame2 = new MetronomoFrame ("FrameDemo");
 		
 		frame2.pack ();
 
