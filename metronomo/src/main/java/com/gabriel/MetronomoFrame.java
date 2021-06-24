@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
 
 public class MetronomoFrame extends JFrame {
 
@@ -29,7 +30,10 @@ public class MetronomoFrame extends JFrame {
 	private JPanel southlPanel;
 	private JPanel centerPanel;
 	private JLabel msglabel;
-	private JButton southPanel;
+	private JButton iniciar;
+	private JButton parar;
+	private JSlider sliderTempo;
+	private JTextField txtTempo;
 
 	public MetronomoFrame(String title) throws HeadlessException {
 		super(title);
@@ -60,28 +64,38 @@ public class MetronomoFrame extends JFrame {
 		
 		this.getContentPane().setLayout(new BorderLayout());
 		
+		setLayout(new BorderLayout());
 		// north
 		headerLabel = new JLabel("Metronomo");
 		this.getContentPane().add(headerLabel,BorderLayout.NORTH);
 		
 		//center
 		centerPanel = new JPanel();
-		this.getContentPane().add(centerPanel,BorderLayout.CENTER);
-		centerPanel.setLayout(new FlowLayout());
-		setLayout(new BorderLayout());
 		
+		centerPanel.setLayout(new FlowLayout());
+		
+		sliderTempo = new JSlider(JSlider.HORIZONTAL );
+		sliderTempo.setMaximum(180);
+		sliderTempo.setMinimum(0);
+		sliderTempo.setValue(100);
+		centerPanel.add(sliderTempo);
+		
+		this.getContentPane().add(centerPanel,BorderLayout.CENTER);
 		// south
 		
 		southlPanel = new JPanel();
-		southlPanel.setLayout(new FlowLayout());
+		southlPanel.setLayout(new FlowLayout()); 
+		
 		statusLabel = new JLabel();
-		southlPanel.add(statusLabel);      
-		southPanel = new JButton("Iniciar");
+		iniciar = new JButton("start");
+		parar = new JButton("stop");
+		southlPanel.add(iniciar);
+		southlPanel.add(parar);
 		
-		
-		statusLabel = new JLabel("BPM");
 		this.getContentPane().add(southlPanel,BorderLayout.SOUTH);
 	}
+	
+	
 
 //	private void showFlowLayoutDemo() {
 //		headerLabel.setText("Metrônomo");
