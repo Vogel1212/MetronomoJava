@@ -29,6 +29,7 @@ public class MetronomoFrame extends JFrame {
 	private JPanel southlPanel;
 	private JPanel centerPanel;
 	private JLabel msglabel;
+	private JButton southPanel;
 
 	public MetronomoFrame(String title) throws HeadlessException {
 		super(title);
@@ -65,15 +66,18 @@ public class MetronomoFrame extends JFrame {
 		
 		//center
 		centerPanel = new JPanel();
-		
-	
 		this.getContentPane().add(centerPanel,BorderLayout.CENTER);
+		centerPanel.setLayout(new FlowLayout());
+		setLayout(new BorderLayout());
 		
 		// south
 		
 		southlPanel = new JPanel();
 		southlPanel.setLayout(new FlowLayout());
-		southlPanel.add(statusLabel);
+		statusLabel = new JLabel();
+		southlPanel.add(statusLabel);      
+		southPanel = new JButton("Iniciar");
+		
 		
 		statusLabel = new JLabel("BPM");
 		this.getContentPane().add(southlPanel,BorderLayout.SOUTH);
