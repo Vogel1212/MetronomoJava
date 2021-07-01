@@ -9,6 +9,9 @@ import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Hashtable;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -67,12 +70,18 @@ public class MetronomoFrame extends JFrame {
 		setLayout(new BorderLayout());
 		// north
 		headerLabel = new JLabel("Metronomo");
+		headerLabel.setBorder(BorderFactory.createTitledBorder("Border"));
+		headerLabel.setAlignmentX(CENTER_ALIGNMENT);
+		
+		headerLabel.setOpaque(true);
 		this.getContentPane().add(headerLabel,BorderLayout.NORTH);
 		
 		//center
 		centerPanel = new JPanel();
 		
 		centerPanel.setLayout(new FlowLayout());
+		centerPanel.setBorder(BorderFactory.createTitledBorder("Border"));
+		centerPanel.setBackground(Color.black);
 		
 		sliderTempo = new JSlider(JSlider.HORIZONTAL );
 		sliderTempo.setMaximum(180);
@@ -87,10 +96,13 @@ public class MetronomoFrame extends JFrame {
 		southlPanel.setLayout(new FlowLayout()); 
 		
 		statusLabel = new JLabel();
+		//Icon icone = new ImageIcon ("")
 		iniciar = new JButton("start");
 		parar = new JButton("stop");
 		southlPanel.add(iniciar);
 		southlPanel.add(parar);
+
+		
 		
 		this.getContentPane().add(southlPanel,BorderLayout.SOUTH);
 	}
