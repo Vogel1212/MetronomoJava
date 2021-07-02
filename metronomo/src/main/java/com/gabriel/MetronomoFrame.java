@@ -2,12 +2,14 @@ package com.gabriel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Dictionary;
 import java.util.Hashtable;
 
 import javax.swing.BorderFactory;
@@ -37,11 +39,14 @@ public class MetronomoFrame extends JFrame {
 	private JButton parar;
 	private JSlider sliderTempo;
 	private JTextField txtTempo;
+	private JPanel sliderPanel;
+
 
 	public MetronomoFrame(String title) throws HeadlessException {
 		super(title);
 		System.out.print("create Frame");
 		prepareGUI();
+		
 	}
 
 	/**
@@ -70,8 +75,8 @@ public class MetronomoFrame extends JFrame {
 		setLayout(new BorderLayout());
 		// north
 		headerLabel = new JLabel("Metronomo");
-		headerLabel.setBorder(BorderFactory.createTitledBorder("Border"));
 		headerLabel.setAlignmentX(CENTER_ALIGNMENT);
+		headerLabel.setBorder(BorderFactory.createTitledBorder("Border"));
 		
 		headerLabel.setOpaque(true);
 		this.getContentPane().add(headerLabel,BorderLayout.NORTH);
@@ -81,13 +86,20 @@ public class MetronomoFrame extends JFrame {
 		
 		centerPanel.setLayout(new FlowLayout());
 		centerPanel.setBorder(BorderFactory.createTitledBorder("Border"));
-		centerPanel.setBackground(Color.black);
+		centerPanel.setBackground(Color.darkGray);
 		
 		sliderTempo = new JSlider(JSlider.HORIZONTAL );
 		sliderTempo.setMaximum(180);
 		sliderTempo.setMinimum(0);
 		sliderTempo.setValue(100);
+		sliderTempo.setMajorTickSpacing(180);
+		sliderTempo.setMinorTickSpacing(1);
+		sliderTempo.setPaintTicks(true);
+		sliderTempo.setPaintLabels(true);
 		centerPanel.add(sliderTempo);
+		
+
+
 		
 		this.getContentPane().add(centerPanel,BorderLayout.CENTER);
 		// south
