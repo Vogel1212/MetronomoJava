@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
@@ -40,13 +41,14 @@ public class MetronomoFrame extends JFrame {
 	private JSlider sliderTempo;
 	private JTextField txtTempo;
 	private JPanel sliderPanel;
-
+	private JTextField bpmTextField;
+	private JLabel velocityLabel;
+	private JLabel bpmLabel;
 
 	public MetronomoFrame(String title) throws HeadlessException {
 		super(title);
 		System.out.print("create Frame");
 		prepareGUI();
-		
 	}
 
 	/**
@@ -84,9 +86,9 @@ public class MetronomoFrame extends JFrame {
 		//center
 		centerPanel = new JPanel();
 		
-		centerPanel.setLayout(new FlowLayout());
+		centerPanel.setLayout(new BorderLayout());
 		centerPanel.setBorder(BorderFactory.createTitledBorder("Border"));
-		centerPanel.setBackground(Color.darkGray);
+		//centerPanel.setBackground(Color.darkGray);
 		
 		sliderTempo = new JSlider(JSlider.HORIZONTAL );
 		sliderTempo.setMaximum(180);
@@ -96,16 +98,27 @@ public class MetronomoFrame extends JFrame {
 		sliderTempo.setMinorTickSpacing(1);
 		sliderTempo.setPaintTicks(true);
 		sliderTempo.setPaintLabels(true);
-		centerPanel.add(sliderTempo);
+	    bpmTextField = new JTextField("120");
+		velocityLabel = new JLabel("Velocidade");
+		bpmLabel = new JLabel("BPM:");
+	    
+		centerPanel.add(velocityLabel, BorderLayout.NORTH);
+		centerPanel.add(sliderTempo, BorderLayout.CENTER);
+			add(add(sliderTempo));
+			setSize(500,200);
+			setVisible(true);
+		centerPanel.add(bpmLabel, BorderLayout.SOUTH);
+		centerPanel.add(bpmTextField, BorderLayout.SOUTH);
 		
 
-
+	    add(centerPanel, BorderLayout.CENTER);
+	   // add(bpmTextField, BorderLayout.SOUTH);
 		
 		this.getContentPane().add(centerPanel,BorderLayout.CENTER);
 		// south
 		
 		southlPanel = new JPanel();
-		southlPanel.setLayout(new FlowLayout()); 
+		southlPanel.setLayout(new GridBagLayout()); 
 		
 		statusLabel = new JLabel();
 		//Icon icone = new ImageIcon ("")
@@ -170,5 +183,6 @@ public class MetronomoFrame extends JFrame {
 	 * setSize(800, 800);
 	 * 
 	 */
+		}
 
-}
+
