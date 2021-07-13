@@ -1,5 +1,4 @@
 package com.gabriel;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -8,6 +7,8 @@ import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Dictionary;
@@ -21,6 +22,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
 
 public class MetronomoFrame extends JFrame {
 
@@ -44,10 +48,12 @@ public class MetronomoFrame extends JFrame {
 	private JTextField bpmTextField;
 	private JLabel velocityLabel;
 	private JLabel bpmLabel;
+	private Logic logic ;
 
 	public MetronomoFrame(String title) throws HeadlessException {
 		super(title);
-		System.out.print("create Frame");
+		System.out.println("create Frame");
+		logic = new Logic();
 		prepareGUI();
 	}
 
@@ -130,6 +136,14 @@ public class MetronomoFrame extends JFrame {
 		
 		
 		this.getContentPane().add(southlPanel,BorderLayout.SOUTH);
+		//action listeners
+		iniciar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				logic.start();
+				//logic.changeTempo(120);
+			}
+		});
 	}
 	
 	
