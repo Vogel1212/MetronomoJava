@@ -48,8 +48,9 @@ public class MetronomoFrame extends JFrame {
 	private JTextField bpmTextField;
 	private JLabel velocityLabel;
 	private JLabel bpmLabel;
-	private Logic logic ;
-
+	private Logic logic ;   
+    private int iTempo;
+    
 	public MetronomoFrame(String title) throws HeadlessException {
 		super(title);
 		System.out.println("create Frame");
@@ -104,17 +105,29 @@ public class MetronomoFrame extends JFrame {
 		sliderTempo.setMinorTickSpacing(1);
 		sliderTempo.setPaintTicks(true);
 		sliderTempo.setPaintLabels(true);
+		sliderTempo.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				//System.out.println(sliderTempo.getValue());
+				iTempo = sliderTempo.getValue();
+				bpmTextField.setText(String.valueOf(iTempo));
+				
+			}
+		});
 	    bpmTextField = new JTextField("120");
 		velocityLabel = new JLabel("Velocidade");
 		bpmLabel = new JLabel("BPM:");
 	    
-		centerPanel.add(velocityLabel, BorderLayout.NORTH);
-		centerPanel.add(sliderTempo, BorderLayout.CENTER);
+		centerPanel.add(velocityLabel, BorderLayout.SOUTH);
+		centerPanel.add(sliderTempo, BorderLayout.SOUTH);
 			add(add(sliderTempo));
 			setSize(500,200);
 			setVisible(true);
 		centerPanel.add(bpmLabel, BorderLayout.SOUTH);
 		centerPanel.add(bpmTextField, BorderLayout.SOUTH);
+			bpmTextField.setSize(100,200);
+			bpmLabel.setSize(100,200);
+			
 		
 
 	    add(centerPanel, BorderLayout.CENTER);
@@ -124,6 +137,7 @@ public class MetronomoFrame extends JFrame {
 		// south
 		
 		southlPanel = new JPanel();
+		//southlPanel.setMinimumSize(new Dimension(800, 300));
 		southlPanel.setLayout(new GridBagLayout()); 
 		
 		statusLabel = new JLabel();
